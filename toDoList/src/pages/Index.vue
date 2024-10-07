@@ -17,7 +17,7 @@ const handleSubmit = async () => {
   try {
     let response;
     if (isLogin.value) {
-      response = await axios.post('https://tdlsrvr.vercel.app/logn', {
+      response = await axios.post('https://tdlsrvr.vercel.app/login', {
         email: email.value,
         password: password.value
       });
