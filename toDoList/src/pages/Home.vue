@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import Swal from 'sweetalert2';
 
 const router = useRouter();
 
@@ -34,10 +35,14 @@ const fetchUser = async () => {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     });
-    console.log('user',response.data);
     user.value = response.data;
   } catch (error) {
     console.error('Error fetching user:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 
@@ -52,6 +57,11 @@ const fetchTodos = async (status = '') => {
     todos.value = response.data;
   } catch (error) {
     console.error('Error fetching todos:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 
@@ -65,6 +75,11 @@ const fetchCategories = async () => {
     categories.value = response.data;
   } catch (error) {
     console.error('Error fetching categories:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 
@@ -111,6 +126,11 @@ const markAsDone = async (id) => {
     await fetchTodos();
   } catch (error) {
     console.error('Error marking todo as done:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 
@@ -124,6 +144,11 @@ const deleteTodo = async (id) => {
     await fetchTodos();
   } catch (error) {
     console.error('Error deleting todo:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 
@@ -159,7 +184,12 @@ const addTask = async () => {
       CategoryId: ''
     };
   } catch (error) {
-    console.error('Error menambahkan tugas:', error);
+    console.error('Error menambahkan tugas:', error.response.data.message);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 
@@ -175,6 +205,11 @@ const addCategory = async () => {
 
   } catch (error) {
     console.error('Error menambahkan kategori:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 

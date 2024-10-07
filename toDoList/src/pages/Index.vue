@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-
+import Swal from 'sweetalert2';
 const router = useRouter();
 const email = ref('');
 const password = ref('');
@@ -37,7 +37,11 @@ const handleSubmit = async () => {
     }
   } catch (error) {
     console.error('Error:', error);
-    alert(error.response.data.message || 'Terjadi kesalahan');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error.response.data.message,
+    });
   }
 };
 
