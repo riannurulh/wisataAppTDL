@@ -29,7 +29,7 @@ const toggleSidebar = () => {
 
 const fetchUser = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/user', {
+    const response = await axios.get('https://tdlsrvr.vercel.app/user', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -43,7 +43,7 @@ const fetchUser = async () => {
 
 const fetchTodos = async (status = '') => {
   try {
-    const response = await axios.get(`http://localhost:3000/todos?status=${status}`, {
+    const response = await axios.get(`https://tdlsrvr.vercel.app/todos?status=${status}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -57,7 +57,7 @@ const fetchTodos = async (status = '') => {
 
 const fetchCategories = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/categories', {
+    const response = await axios.get('https://tdlsrvr.vercel.app/categories', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -103,7 +103,7 @@ const getStatusBadgeColor = (status) => {
 
 const markAsDone = async (id) => {
   try {
-    await axios.put(`http://localhost:3000/todos/${id}`, { status: 'done' }, {
+    await axios.put(`https://tdlsrvr.vercel.app/todos/${id}`, { status: 'done' }, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -116,7 +116,7 @@ const markAsDone = async (id) => {
 
 const deleteTodo = async (id) => {
   try {
-    await axios.delete(`http://localhost:3000/todos/${id}`, {
+    await axios.delete(`https://tdlsrvr.vercel.app/todos/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -143,7 +143,7 @@ const closeModalCategory = () => {
 
 const addTask = async () => {
   try {
-    const response = await axios.post('http://localhost:3000/todos', newTask.value, {
+    const response = await axios.post('https://tdlsrvr.vercel.app/todos', newTask.value, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -165,7 +165,7 @@ const addTask = async () => {
 
 const addCategory = async () => {
   try {
-    const response = await axios.post('http://localhost:3000/categories', newCategory.value, {
+    const response = await axios.post('https://tdlsrvr.vercel.app/categories', newCategory.value, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }

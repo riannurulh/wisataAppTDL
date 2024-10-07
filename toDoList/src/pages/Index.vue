@@ -17,14 +17,14 @@ const handleSubmit = async () => {
   try {
     let response;
     if (isLogin.value) {
-      response = await axios.post('http://localhost:3000/login', {
+      response = await axios.post('https://tdlsrvr.vercel.app/logn', {
         email: email.value,
         password: password.value
       });
       localStorage.setItem('token', response.data.token);
       router.push('/home');
     } else {
-      response = await axios.post('http://localhost:3000/register', {
+      response = await axios.post('https://tdlsrvr.vercel.app/register', {
         fullName: fullName.value,
         email: email.value,
         password: password.value
