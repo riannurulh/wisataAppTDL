@@ -1,0 +1,26 @@
+{
+  "name": "todolist",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "start": "vite"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "sweetalert2": "^11.14.1",
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.5",
+    "vue-writer": "^2.0.2",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "sass": "^1.79.4",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
+  }
+}

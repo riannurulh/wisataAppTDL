@@ -1,0 +1,32 @@
+const express = require('express')
+const cors = require('cors')
+const UserController = require('./controllers/UserController')
+const TodosController = require('./controllers/TodosController')
+const isAuthenticate = require('./middleware/isAuthenticate')
+const errorHandler = require('./middleware/errorHandler')
+const app = express()
+const port = 3000
+
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+app.post('/register', UserController.register)
+app.post('/login', UserController.login)
+app.get('/user', isAuthenticate, UserController.userLoginProfile)
+app.get('/todos', isAuthenticate, TodosController.getAllTodos)
+app.post('/todos', isAuthenticate, TodosController.createTodo)
+// app.get('/todos/today', isAuthenticate, TodosController.getTodosToday)
+app.get('/todos/:id', isAuthenticate, TodosController.getTodosById)
+app.put('/todos/:id', isAuthenticate, TodosController.updateTodo)
+app.delete('/todos/:id', isAuthenticate, TodosController.deleteTodo)
+app.get('/todos/status/:status', isAuthenticate, TodosController.getTodosByStatus)
+app.post('/categories', isAuthenticate, TodosController.createCategory)
+app.get('/categories', isAuthenticate, TodosController.getCategories)
+app.use(errorHandler)
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
